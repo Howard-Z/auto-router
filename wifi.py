@@ -1,6 +1,8 @@
 import os
 import platform
 import macwifi #python3 -m pip install macwifi
+import subprocess
+
 #import objc #need to run 'python3 -m pip install pyobjc'
 
 #connecting to a known wifi network (password known)
@@ -82,6 +84,16 @@ def new_wifi(SSID=None,pswd=None):
     if platform.system()=="Darwin":
         macwifi.connect(router_name, password)
 
+#returns string of ip address
+def ip_address(SSID=None):
+    #mac
+    if(platform.system()=="Darwin"):
+        address = subprocess.check_output("route get default | grep gateway", shell=True)
+        string_address = address.decode('utf-8')
+        index=string_address.rfind(' ')+1
+        return string_address[index:]
 
-new_wifi(SSID="nicole",pswd="hellothere")
 
+
+#new_wifi(SSID="nicole",pswd="hellothere")
+ip_address()
