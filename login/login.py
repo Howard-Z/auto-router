@@ -14,7 +14,6 @@ from selenium.webdriver.common.keys import Keys
 
 
 
-
 #setup connection
 options = webdriver.ChromeOptions()
 #options.add_argument('--headless')
@@ -28,30 +27,32 @@ def connect(ip):
     wait.until(EC.presence_of_element_located((By.ID, "login-table")))
 
 def login(username, password, force = True):
-    #input_box1 = driver.find_element(By.XPATH, "//input[@ng-model='username']")
-    input_box2 = driver.find_element(By.XPATH, "//input[@type='password']")
-    submit = driver.find_element(By.XPATH, "//button[@ng-click='login()']")
-    #input_box1.send_keys("admin")
-    input_box2.send_keys(password)
-
-    submit.click()
-
-    if isLoggedIn():
+    if login_attempt(username, password):
         return True
     if force:
         f = open('logins.json')
         data = json.load(f)
-
         for credential in data['logins']:
-            print(credential)
-            print("Trying:")
-            print("Username: ", credential["user"])
-            print("Password: ", credential["pass"])
-            if isLoggedIn():
+            if login_attempt(credential["user"], credential["pass"]):
                 return True
         return False
+    return False
 
-    
+
+def login_attempt(username, password, debug = False):
+    if debug:
+        print("Trying:")
+        print("Username: ", username)
+        print("Password: ", password)
+
+    input_box2 = driver.find_element(By.XPATH, "//input[@type='password']")
+    input_box2.send_keys(password)
+
+    submit = driver.find_element(By.XPATH, "//button[@ng-click='login()']")
+    submit.click()
+    if isLoggedIn():
+        return True
+    return False
 
 #page_source = driver.page_source
 
@@ -77,15 +78,15 @@ def isLoggedIn():
 
 
 #configure test username and password
-# username = 'admin'
-# password = '(2*b)||!(2*b)==TRUE'
-# ip = "192.168.1.1"
-# ip = "http://" + ip
+username = 'admin'
+password = '(2*b)||!(2*b)==TRUE!'
+ip = "192.168.1.1"
+ip = "http://" + ip
 
 
-# connect(ip)
-# login(username, password)
-# time.sleep(2)
-# thing = isLoggedIn()
-# print(thing)
+connect(ip)
+login(username, password)
+time.sleep(2)
+thing = isLoggedIn()
+print(thing)
 #print(driver.page_source)
