@@ -1,6 +1,8 @@
 import os
 import platform
 import macwifi #python3 -m pip install macwifi
+import socket
+
 import subprocess
 
 #import objc #need to run 'python3 -m pip install pyobjc'
@@ -86,14 +88,19 @@ def new_wifi(SSID=None,pswd=None):
 
 #returns string of ip address
 def ip_address(SSID=None):
+    #windows, not sure if this works
+    if(platform.system()=="Windows"):
+        address = subprocess.check_output('ifconfig | findstr /i "Gateway"', shell=True)
+        string_address = address.decode('utf-8')
+        index=string_address.rfind(' ')+1
+        return string_address[index:]
     #mac
     if(platform.system()=="Darwin"):
         address = subprocess.check_output("route get default | grep gateway", shell=True)
         string_address = address.decode('utf-8')
         index=string_address.rfind(' ')+1
-        return string_address[index:]
-
-
+        return string_address[index:].strip()
+    
 
 #new_wifi(SSID="nicole",pswd="hellothere")
-ip_address()
+print(ip_address())
