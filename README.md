@@ -11,6 +11,6 @@ pip install pytessseract
 pip install opencv-python
 ```
 
-## Tesseract Installation
+### Tesseract Installation
 Install Google Tesseract OCR, installation information can be found [here](https://tesseract-ocr.github.io/tessdoc/Installation.html). 
 
