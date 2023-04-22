@@ -2,6 +2,12 @@
 
 ## Installation
 
+### Install Commands
+```
+cd auto-router
+npm install
+```
+
 ### Libraries Used
 ```
 pip install selenium
