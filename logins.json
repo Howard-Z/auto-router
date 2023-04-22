@@ -1,0 +1,40 @@
+{
+  "logins": [
+    {
+      "user": "admin",
+      "pass": "password"
+    },
+    {
+      "user": "admin",
+      "pass": "admin"
+    },
+    {
+      "user": "admin",
+      "pass": "Admin"
+    },
+    {
+      "user": "admin",
+      "pass": "password1"
+    },
+    {
+      "user": "admin",
+      "pass": "Michelangelo"
+    },
+    {
+      "user": "sitecom",
+      "pass": "Admin"
+    },
+    {
+      "user": "root",
+      "pass": "alpine"
+    },
+    {
+      "user": "telco",
+      "pass": "telco"
+    },
+    {
+      "user": "root",
+      "pass": "admin"
+    }
+  ]
+}
