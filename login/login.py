@@ -12,11 +12,7 @@ from selenium.webdriver.common.keys import Keys
 #import lxml
 
 
-#configure test username and password
-username = 'admin'
-password = '(2*b)||!(2*b)==TRUE'
-ip = "192.168.1.1"
-ip = "http://" + ip
+
 
 
 #setup connection
@@ -24,35 +20,68 @@ options = webdriver.ChromeOptions()
 #options.add_argument('--headless')
 driver = webdriver.Chrome(options=options)
 
-driver.get(ip)
+def connect(ip):
+    driver.get(ip)
 
-wait = WebDriverWait(driver, 10)
-wait.until(EC.presence_of_element_located((By.ID, "login-table")))
+    #frontier specific
+    wait = WebDriverWait(driver, 10)
+    wait.until(EC.presence_of_element_located((By.ID, "login-table")))
 
-#input_box1 = driver.find_element(By.XPATH, "//input[@ng-model='username']")
-input_box2 = driver.find_element(By.XPATH, "//input[@type='password']")
+def login(username, password, force = True):
+    #input_box1 = driver.find_element(By.XPATH, "//input[@ng-model='username']")
+    input_box2 = driver.find_element(By.XPATH, "//input[@type='password']")
 
-submit = driver.find_element(By.XPATH, "//button[@ng-click='login()']")
-#input_box1.send_keys("admin")
-input_box2.send_keys("(2*b)||!(2*b)==TRUE")
+    if force:
+        f = open('logins.json')
+        data = json.load(f)
 
-submit.click()
+        for credential in data['logins']:
+            print(credential)
+            # print("Trying:")
+            # print("Username: %s", credential[0])
+            # print("Password: %s", credential[1])
+            if isLoggedIn():
+                break
+        return False
 
-page_source = driver.page_source
+    submit = driver.find_element(By.XPATH, "//button[@ng-click='login()']")
+    #input_box1.send_keys("admin")
+    input_box2.send_keys(password)
 
-print("header find:")
-try:
-    print(driver.find_element(By.CLASS_NAME, "header"))
-except:
-    print("not in login page")
-print("wireless tab find")
-try:
-    print(driver.find_element(By.ID, "wireless_tab"))
-except:
-    print("login failed")
+    #submit.click()
+
+#page_source = driver.page_source
+
+def isLoggedIn():
+    print("checking login status", end = "")
+    for i in range(0, 3):
+        print('.', end = "")
+        time.sleep(1)
+    print()
+    try:
+        driver.find_element(By.CLASS_NAME, "header")
+        print("login failed")
+        return False
+    except:
+        try:
+            driver.find_element(By.ID, "wireless_tab")
+            print("Login Succeeded")
+            return True
+        except:
+            print("login failed")
+            return False
     
-page_source = driver.page_source
 
 
-#content = driver.find_element(By.ID, "login-table")
-print(page_source)
+#configure test username and password
+username = 'admin'
+password = '(2*b)||!(2*b)==TRUE'
+ip = "192.168.1.1"
+ip = "http://" + ip
+
+
+connect(ip)
+login(username, password)
+time.sleep(2)
+isLoggedIn()
+#print(driver.page_source)
