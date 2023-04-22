@@ -37,7 +37,19 @@ input_box2.send_keys("(2*b)||!(2*b)==TRUE")
 
 submit.click()
 
+page_source = driver.page_source
 
+print("header find:")
+try:
+    print(driver.find_element(By.CLASS_NAME, "header"))
+except:
+    print("not in login page")
+print("wireless tab find")
+try:
+    print(driver.find_element(By.ID, "wireless_tab"))
+except:
+    print("login failed")
+    
 page_source = driver.page_source
 
 
