@@ -2,7 +2,8 @@
 import cv2
 from pytesseract import pytesseract
 
-
+# Arguments: Takes in a path to an image
+# Returns: Dictionary that maps the key(username, SSID, password) to the value
 def read_image(image):
     img = cv2.imread(image)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
