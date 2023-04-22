@@ -1,14 +1,15 @@
-import requests
+#import requests
 import time
-from requests_html import HTMLSession
+import json
+#from requests_html import HTMLSession
 from selenium.webdriver.common.by import By 
-import requests_html
-from bs4 import BeautifulSoup
+#import requests_html
+#from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
-import lxml
+#import lxml
 
 
 #configure test username and password
