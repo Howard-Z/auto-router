@@ -14,4 +14,6 @@ x = {
 f = open('logins.json')
 data = json.load(f)
 
-print(data['frontier'])
+#print(data['frontier'])
+for entry in data["logins"]:
+    print(entry["user"])

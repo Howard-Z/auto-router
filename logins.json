@@ -2,6 +2,10 @@
   "logins": [
     {
       "user": "admin",
+      "pass": "(2*b)||!(2*b)==TRUE"
+    },
+    {
+      "user": "admin",
       "pass": "password"
     },
     {

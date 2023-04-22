@@ -30,25 +30,28 @@ def connect(ip):
 def login(username, password, force = True):
     #input_box1 = driver.find_element(By.XPATH, "//input[@ng-model='username']")
     input_box2 = driver.find_element(By.XPATH, "//input[@type='password']")
+    submit = driver.find_element(By.XPATH, "//button[@ng-click='login()']")
+    #input_box1.send_keys("admin")
+    input_box2.send_keys(password)
 
+    submit.click()
+
+    if isLoggedIn():
+        return True
     if force:
         f = open('logins.json')
         data = json.load(f)
 
         for credential in data['logins']:
             print(credential)
-            # print("Trying:")
-            # print("Username: %s", credential[0])
-            # print("Password: %s", credential[1])
+            print("Trying:")
+            print("Username: ", credential["user"])
+            print("Password: ", credential["pass"])
             if isLoggedIn():
-                break
+                return True
         return False
 
-    submit = driver.find_element(By.XPATH, "//button[@ng-click='login()']")
-    #input_box1.send_keys("admin")
-    input_box2.send_keys(password)
-
-    #submit.click()
+    
 
 #page_source = driver.page_source
 
@@ -74,14 +77,15 @@ def isLoggedIn():
 
 
 #configure test username and password
-username = 'admin'
-password = '(2*b)||!(2*b)==TRUE'
-ip = "192.168.1.1"
-ip = "http://" + ip
+# username = 'admin'
+# password = '(2*b)||!(2*b)==TRUE'
+# ip = "192.168.1.1"
+# ip = "http://" + ip
 
 
-connect(ip)
-login(username, password)
-time.sleep(2)
-isLoggedIn()
+# connect(ip)
+# login(username, password)
+# time.sleep(2)
+# thing = isLoggedIn()
+# print(thing)
 #print(driver.page_source)
