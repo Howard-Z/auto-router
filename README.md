@@ -45,3 +45,5 @@ pip install opencv-python
 ### Tesseract Installation
 Install Google Tesseract OCR, installation information can be found [here](https://tesseract-ocr.github.io/tessdoc/Installation.html). 
 
+## Acknowledgements
+Thank you to Nicole Ju for working on the automatic connection to WiFi feature. Unfortunately we could not have hardware present for us to tinker with so this feauture could not ultimately be used. Thank you to Andy Zhang for writing the computer vision code to process a router label. Again, we could not use this feature given the circumstances, but we hope to incorporate it in the future. Their code can be found in commit ID: 70f0535e1cc7fb0ff56b21c8dc559dea1455d860 and earlier.
