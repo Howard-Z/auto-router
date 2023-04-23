@@ -17,11 +17,15 @@ Including another URLconf
 from django.urls import include, re_path
 from django.contrib import admin
 from .views import execute_script, home, new_router
-from .login import login_render
+from .login import login_render, fixme, secure
+from .more_resources import more_resources
 urlpatterns = [
     re_path(r'^admin/', admin.site.urls),
     re_path('execute_script/', execute_script, name='execute_script'),
     re_path('new_router/', new_router, name='new_router'),
     re_path(r'login', login_render, name='login'),
+    re_path(r'fixme', fixme, name ='fixme'),
+    re_path(r'secure', secure, name = 'secure'),
+    re_path(r'more-resources', more_resources, name = 'more_resources'),
     re_path('', home, name='home'),
 ]
