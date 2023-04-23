@@ -1,19 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+    {% load static %}
     <head>
-        <link rel="stylesheet" href="./CSS/home.css">
-        <style>
-            body {
-                background-color: rgb(39, 116, 174);
-                font-family: Arial, Helvetica, sans-serif;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="{% static 'CSS/home.css' %}">
         <title>Router Secure</title>
     </head>
     <body>
         <div className="wrapper">
             <div>
-                <h1 style="font-size: 10em; color:white"><center>Welcome</center></h1>
+                <h1><center>Welcome</center></h1>
             </div>
             <div>
                 <p><center>This is the home page</center></p>
@@ -21,9 +16,9 @@
             <div>
                 <center><b style="font-size: 2em">This is a button</b>
                 <div style="flex-grow: 1"/>
-                <Button onclick="window.location.href='http://127.0.0.1:8000/new_router/';">
+                <button id="button" onclick="window.location.href='http://127.0.0.1:8000/new_router/';">
                     Setup New Router
-                </Button>
+                </button>
                 </center>
             </div>
         </div>    
