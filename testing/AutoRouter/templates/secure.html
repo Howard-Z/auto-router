@@ -1,9 +1,18 @@
 <!-- templates/result.html -->
 <!DOCTYPE html>
 <html>
-<body>
-  <p>Your Router doesn't use common passwords! But that doesn't mean you shouldn't take extra precautions</p>
-  <div>Click below to check out some more resources</div>
-  <button onclick="location.href='http://localhost:8000/more-resources'">Learn More</button>
-</body>
+  {% load static %}
+  <head>
+      <meta charset="utf-8">
+      <link rel="stylesheet" type="text/css" href="{% static 'CSS/login.css' %}">
+      <title>Router Secure</title>
+  </head>
+  <body>
+    <div id="box">
+      <h1 style="font-size:32px; padding-top: 8px; font-weight: bold; color:#ffd100">Your router is secure!</h1>
+    <p>Your Router doesn't use common passwords! But that doesn't mean you shouldn't take extra precautions</p>
+    <div>Click below to check out some more resources</div>
+    <button onclick="location.href='http://localhost:8000/more-resources'">Learn More</button>
+    </div>
+  </body>
 </html>

@@ -69,7 +69,7 @@ def login_attempt(username, password, debug = False):
 
     submit = driver.find_element(By.XPATH, "//button[@ng-click='login()']")
     submit.click()
-    return "Tried: { Username: " + str(username) + ", Password: " + str(password) + "}\n"
+    return "Username: " + str(username) + ", Password: " + str(password) + "\n"
     # if isLoggedIn():
     #     return True
     # return False

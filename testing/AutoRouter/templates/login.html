@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>My Template</title>
-  </head>
+    {% load static %}
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="{% static 'CSS/login.css' %}">
+        <title>Router Secure</title>
+    </head>
   {% if showbtn %}
+  <!-- Button page-->
   <body>
     <div id="output"></div>
-    <form method="post">
-      {% csrf_token %}
-      <button id="btn" type="submit">Run Script</button>
-      <div id="running" style="display: none;">Running...</div>
-    </form>
+    <div>
+      <h1>Router Checker</h1>
+    </div>
+    <div id="box">
+      <p>When you click the button below, our program will try to log in to your router by testing some of the commonly used router passwords on the internet.  We will warn you if your password is a security risk.</p>
+      <b>This will open a new window.</b>
+      <br>
+    </div>
+    <br>
+    <div>
+      <form method="post">
+        {% csrf_token %}
+        
+        <button id="btn" type="submit">Test Router</button>
+        <div id="running" style="display: none;">Running...</div>
+      </form>
+    </div>
     <script>
         const myButton = document.getElementById("btn");
         const myDiv = document.getElementById("running")
@@ -27,18 +42,27 @@
   </body>
   {% endif %}
   {% if results %}
+  <!-- Results Page-->
   <body>
-    <p>Here are some of the results:</p>
+    <div id="box">
+      <h1 style="font-size:32px; padding-top: 8px; font-weight: bold; color:#ffd100">Your router is not secure!</h1>
+      <p style="font-size:32px;">We tried the following combinations:</p>
       {% for thing in results %}
         <div>{{ thing }}</div>
       {% endfor %}
+
+       {% endif %}
+     <!-- Not Secure Page-->
+      {% if secure %}
+      <br>
+      <div style="font-size:24px;padding-bottom: 8px;">Your login information is:</div>
+      <div>Username: &nbsp {{ username }}</div>
+      <div>Password: &nbsp {{ password }}</div>
+    </div>
+    <br>
+  <button onclick="location.href='http://localhost:8000/fixme'">Show me how to secure my password!</button>
+  <div><p style="color: white;">This will open a new window.</p></div>
+  {% endif %}
+ 
   </body>
-  {% endif %}
-  {% if secure %}
-  <div>Your Router is not secure! Your login information is:</div>
-  <div>Username: &nbsp {{ username }}</div>
-  <div>Password: &nbsp {{ password }}</div>
-  <div>Click on the button below to see how to secure your password!</div>
-  <button onclick="location.href='http://localhost:8000/fixme'">Click ME</button>
-  {% endif %}
 </html>

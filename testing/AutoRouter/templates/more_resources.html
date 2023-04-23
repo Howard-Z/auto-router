@@ -1,10 +1,15 @@
 <!-- templates/result.html -->
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Read Image</title>
-</head>
+  {% load static %}
+  <head>
+      <meta charset="utf-8">
+      <link rel="stylesheet" type="text/css" href="{% static 'CSS/more_resources.css' %}">
+      <title>More Resources</title>
+  </head>
 <body>
+  <h1>More Resources</h1>
+  <div id="box">
   <p>Here are some more resources to help you further secure your network:</p>
   <div>1. If our program managed to log into your router, make sure you pick a strong and unique password so that it's not as easy to guess
     <div>https://www.security.org/how-secure-is-my-password/</div>
@@ -30,5 +35,6 @@
   <div>8. Having guests? Consider turning on a guest network that separates your guests' devices from your personal ones.
     <div>https://www.hellotech.com/guide/for/how-to-set-up-guest-wifi-network</div>
   </div>
+
 </body>
 </html>
