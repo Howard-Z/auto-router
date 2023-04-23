@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My Template</title>
+  </head>
+  {% if showbtn %}
+  <body>
+    <div id="output"></div>
+    <form method="post">
+      {% csrf_token %}
+      <button id="btn" type="submit">Run Script</button>
+      <div id="running" style="display: none;">Running...</div>
+    </form>
+    <script>
+        const myButton = document.getElementById("btn");
+        const myDiv = document.getElementById("running")
+        // myButton.addEventListener("click", function() {
+        //     const myDiv = document.createElement("div");
+        //     myDiv.textContent = "Running..."
+        //     myButton.parentNode.replaceChild(myDiv, myButton)
+        myButton.addEventListener("click", function() {
+            myButton.style.display = "none";
+            myDiv.style.display = "";
+        });
+        </script>
+  </body>
+  {% endif %}
+  {% if results %}
+  <body>
+    <p>Here are some of the results:</p>
+      {% for thing in results %}
+        <div>{{ thing }}</div>
+      {% endfor %}
+  </body>
+  {% endif %}
+  {% if secure %}
+  <div>Your Router is not secure! Your login information is:</div>
+  <div>Username: &nbsp {{ username }}</div>
+  <div>Password: &nbsp {{ password }}</div>
+  <div>Click on the button below to see how to secure your password!</div>
+  <button onclick="location.href='http://localhost:8000/fixme'">Click ME</button>
+  {% endif %}
+</html>
