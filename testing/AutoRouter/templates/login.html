@@ -14,7 +14,7 @@
       <h1>Router Checker</h1>
     </div>
     <div id="box">
-      <p>When you click the button below, our program will try to log in to your router by testing some of the commonly used router passwords on the internet.  </p>
+      <p style="text-size:1em">When you click the button below, our program will try to log in to your router by testing some of the commonly used router passwords on the internet.  </p>
         <p>We will warn you if your password is a security risk.</p>
     </div>
     <br>
@@ -44,8 +44,8 @@
   <!-- Results Page-->
   <body>
     <div id="box">
-      <h1 style="font-size:32px; padding-top: 8px; font-weight: bold; color:#ffd100">Your router is not secure!</h1>
-      <p style="font-size:32px;">We tried the following combinations:</p>
+      <h1 style="font: size 2em; padding-top: 0.5em; font-weight: bold; color:#ffd100">Your router is not secure!</h1>
+      <p style="font-size:2em;">We tried the following combinations:</p>
       {% for thing in results %}
         <div>{{ thing }}</div>
       {% endfor %}
@@ -54,7 +54,7 @@
      <!-- Not Secure Page-->
       {% if secure %}
       <br>
-      <div style="font-size:24px;padding-bottom: 8px;">Your login information is:</div>
+      <div style="font-size:1.5em;padding-bottom: 0.5em;color: #ffd100">Your login information is:</div>
       <div>Username: &nbsp {{ username }}</div>
       <div>Password: &nbsp {{ password }}</div>
     </div>

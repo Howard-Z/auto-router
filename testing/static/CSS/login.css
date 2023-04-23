@@ -7,9 +7,10 @@ body {
 }
 #box {
     color: white;
-    border: 2px solid white;
-    padding: 12px 35px;
+    border: 0.1em solid white;
+    padding: 0.75em 2.2em;
     padding-top: 0px;
+    font-size: 1.5em;
 }
 h1 {
     font-size: 4em; 
@@ -17,20 +18,20 @@ h1 {
 }
 button {
     background-color: #ffd100;
-    border: 1px solid white;
+    border: 0.1em solid white;
     color: #ffffff;
-    padding: 8px 16px;
+    padding: 0.5em 1em;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 30px;
+    font-size: 1.9em;
     font-weight: bold;
 }
 
 #running {
     color: white;
     font-size: 2em;
-    padding: 12px 35px;
+    padding: 0.75em 2.2em;
     padding-top: 0px;
     font-weight: bold;
 }
