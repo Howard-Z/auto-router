@@ -11,11 +11,11 @@
     },
     {
       "user": "admin",
-      "pass": "Admin"
+      "pass": "(2*b)||!(2*b)==TRUE"
     },
     {
       "user": "admin",
-      "pass": "(2*b)||!(2*b)==TRUE"
+      "pass": "Admin"
     },
     {
       "user": "admin",

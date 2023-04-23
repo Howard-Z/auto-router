@@ -3,7 +3,7 @@ from tkinter import filedialog
 from tkinter import messagebox
 import sys
 import time
-sys.path.extend(['login', 'MAC'])
+sys.path.extend(['login', 'MAC', 'tkinterUI'])
 from login import *
 
 root = Tk()
