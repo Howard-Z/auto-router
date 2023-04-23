@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+        <div className="wrapper">
+            <div>
+                <h1>Welcome</h1>
+            </div>
+            <div>
+                <p>This is the page for setting up a new router</p>
+            </div>
+            <div>
+                <b style="font-size: 2em">This is a button</b>
+                <div style="flex-grow: 1"/>
+                <form method="post" action="{% url 'execute_script' %}">
+                    {% csrf_token %}
+                <label for="image">Image:</label>
+                <input type="file" name="image" id="image">
+                <button type="submit">Submit</button>
+                </form>
+            </div>
+            <div>
+                <Button onclick="window.location.href='http://127.0.0.1:8000/execute_script/';">
+                    Manually Input Information
+                </Button>
+            </div>
+        </div>
+</html>
