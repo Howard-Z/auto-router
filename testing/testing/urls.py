@@ -19,5 +19,5 @@ from django.contrib import admin
 
 urlpatterns = [
     re_path(r'^admin/', admin.site.urls),
-    re_path("AutoRouter/", include("AutoRouter.urls")),
+    re_path("", include("AutoRouter.urls")),
 ]

@@ -3,6 +3,7 @@ import subprocess
 import cv2
 from pytesseract import pytesseract
 
+
 def read_image(image):
     print(image)
     img = cv2.imread(image)
@@ -40,9 +41,27 @@ def read_image(image):
             texts[i] = texts[i].strip()
         temp_dict[texts[0]] = texts[1]
 
-    return(temp_dict)
+    return (temp_dict)
+
 
 def execute_script(request):
-    dict = read_image("test3.png")
+    if request.method == "POST":
+        image = request.POST['image']
+        print(image)
+        dict = read_image("static/"+image)
+        # print(dict)
+        return render(request, 'results.html', {'dict': dict})
+
+    image = "static/test3.png"
+    dict = read_image(image)
+
     return render(request, 'results.html', {'dict': dict})
+
+
+def home(request):
+    return render(request, 'home.html')
+
+
+def new_router(request):
+    return render(request, 'new_router.html')
 # Create your views here.

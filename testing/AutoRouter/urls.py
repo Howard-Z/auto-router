@@ -16,9 +16,11 @@ Including another URLconf
 # from django.conf.urls import url
 from django.urls import include, re_path
 from django.contrib import admin
-from .views import execute_script
+from .views import execute_script, home, new_router
 
 urlpatterns = [
     re_path(r'^admin/', admin.site.urls),
     re_path('execute_script/', execute_script, name='execute_script'),
+    re_path('new_router/', new_router, name='new_router'),
+    re_path(r'', home, name='home'),
 ]
